@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hello" class="pojo.Hello">
+        <property name="str" value="spring">
+
+        </property>
+    </bean>
+
+    <bean id="mysqlImple" class="dao.UserDaoImpl"/>
+    <bean id="OracleImple" class="dao.UserDaoOracleImpl"/>
+        <!-- collaborators and configuration for this bean go here -->
+
+    <bean id="UserServiceImple" class="service.UserServiceImpl">
+        <property name="userDao" ref="OracleImple">
+        </property>
+    </bean>
+
+    <bean id="user" class="pojo.User">
+<!--        <property name="name" value="hao"></property>-->
+        <constructor-arg index="0" value="hao"></constructor-arg>
+    </bean>
+
+    <bean id="student" class="pojo.Student">
+        <property name="name" value="hao"></property>
+        <property name="books">
+            <array>
+                <value>book1</value>
+                <value>book2</value>
+            </array>
+        </property>
+        <property name="hobbys">
+            <list>
+                <value>hobbys1</value>
+                <value>hobbys2</value>
+            </list>
+        </property>
+        <property name="card">
+            <map>
+                <entry key="idcard1" value="123456"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="address" class="pojo.Address">
+
+    </bean>
+
+</beans>
